@@ -4,16 +4,48 @@ import { useState } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const MAX_PHOTOS = 5;
+const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB per photo
+const MAX_TOTAL_BYTES = 25 * 1024 * 1024; // 25 MB total
+
+function validateFiles(files: FileList | null): string | null {
+  if (!files || files.length === 0) return null;
+  if (files.length > MAX_PHOTOS)
+    return `Please attach no more than ${MAX_PHOTOS} photos.`;
+  let total = 0;
+  for (const file of Array.from(files)) {
+    if (!file.type.startsWith("image/"))
+      return "Only image files can be attached.";
+    if (file.size > MAX_FILE_BYTES)
+      return `"${file.name}" is too large — each photo must be under 10 MB.`;
+    total += file.size;
+    if (total > MAX_TOTAL_BYTES)
+      return "Photos are too large in total — please keep them under 25 MB.";
+  }
+  return null;
+}
+
 const inputClass =
   "rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white outline-none placeholder:text-zinc-500";
 
 export default function QuoteForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [photoCount, setPhotoCount] = useState(0);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === "sending") return;
+
+    const fileError = validateFiles(
+      e.currentTarget.querySelector<HTMLInputElement>('input[name="photos"]')
+        ?.files ?? null
+    );
+    if (fileError) {
+      setValidationError(fileError);
+      return;
+    }
+    setValidationError(null);
     setStatus("sending");
 
     try {
@@ -21,9 +53,15 @@ export default function QuoteForm() {
         method: "POST",
         body: new FormData(e.currentTarget),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Request failed");
+      }
       setStatus("sent");
-    } catch {
+    } catch (err) {
+      setValidationError(
+        err instanceof Error ? err.message : "Something went wrong."
+      );
       setStatus("error");
     }
   }
@@ -76,12 +114,18 @@ export default function QuoteForm() {
           accept="image/*"
           multiple
           className="hidden"
-          onChange={(e) => setPhotoCount(e.target.files?.length ?? 0)}
+          onChange={(e) => {
+            setPhotoCount(e.target.files?.length ?? 0);
+            setValidationError(validateFiles(e.target.files));
+          }}
         />
         {photoCount > 0
           ? `${photoCount} photo${photoCount === 1 ? "" : "s"} selected`
-          : "Attach vehicle photos (optional)"}
+          : "Attach vehicle photos (optional, up to 5)"}
       </label>
+      {validationError && (
+        <p className="text-red-300 md:col-span-2">{validationError}</p>
+      )}
       <button
         type="submit"
         disabled={status === "sending"}
@@ -89,7 +133,7 @@ export default function QuoteForm() {
       >
         {status === "sending" ? "Sending…" : "Request Pricing"}
       </button>
-      {status === "error" && (
+      {status === "error" && !validationError && (
         <p className="text-red-300 md:col-span-2">
           Something went wrong — please try again or text us directly at (801)
           865-9601.

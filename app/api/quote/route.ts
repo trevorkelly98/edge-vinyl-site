@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+const MAX_PHOTOS = 5;
+const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB per photo
+const MAX_TOTAL_BYTES = 25 * 1024 * 1024; // 25 MB total (Resend caps at 40 MB)
+
 export async function POST(req: NextRequest) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -26,12 +30,46 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const photos = formData
+      .getAll("photos")
+      .filter((p): p is File => p instanceof File && p.size > 0);
+
+    if (photos.length > MAX_PHOTOS) {
+      return NextResponse.json(
+        { error: `Please attach no more than ${MAX_PHOTOS} photos.` },
+        { status: 400 }
+      );
+    }
+
+    let totalBytes = 0;
     const attachments: { filename: string; content: Buffer }[] = [];
-    for (const photo of formData.getAll("photos")) {
-      if (photo instanceof File && photo.size > 0) {
-        const buffer = Buffer.from(await photo.arrayBuffer());
-        attachments.push({ filename: photo.name || "photo.jpg", content: buffer });
+    for (const photo of photos) {
+      if (!photo.type.startsWith("image/")) {
+        return NextResponse.json(
+          { error: "Only image files can be attached." },
+          { status: 400 }
+        );
       }
+      if (photo.size > MAX_FILE_BYTES) {
+        return NextResponse.json(
+          {
+            error: `"${photo.name}" is too large. Each photo must be under 10 MB.`,
+          },
+          { status: 400 }
+        );
+      }
+      totalBytes += photo.size;
+      if (totalBytes > MAX_TOTAL_BYTES) {
+        return NextResponse.json(
+          {
+            error:
+              "Photos are too large in total. Please keep them under 25 MB.",
+          },
+          { status: 400 }
+        );
+      }
+      const buffer = Buffer.from(await photo.arrayBuffer());
+      attachments.push({ filename: photo.name || "photo.jpg", content: buffer });
     }
 
     const { error } = await resend.emails.send({
