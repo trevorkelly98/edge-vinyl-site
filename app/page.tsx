@@ -33,20 +33,17 @@ export default function EdgeVinylWebsite() {
     {
       title: "Evo X",
       subtitle: "3M 2080 Gloss White Gold Sparkle",
-      image:
-        "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
+      image: "/gallery/evo-x-gold-sparkle.jpg",
     },
     {
       title: "CBR1000RR",
       subtitle: "Avery SW900 Gloss Black",
-      image:
-        "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80",
+      image: "/gallery/cbr1000rr-gloss-black.jpg",
     },
     {
       title: "Chrome Delete",
       subtitle: "Clean OEM+ restyling",
-      image:
-        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+      image: "/gallery/ram-chrome-delete.jpg",
     },
   ];
 
@@ -129,8 +126,8 @@ export default function EdgeVinylWebsite() {
 
                 <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-zinc-900">
                   <img
-                    src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1400&q=80"
-                    alt="Wrapped car"
+                    src="/gallery/featured-evo-x.jpg"
+                    alt="Evo X wrapped in gloss white with gold sparkle at sunset in the Utah mountains"
                     className="h-[360px] w-full object-cover"
                   />
                 </div>
