@@ -45,6 +45,26 @@ export default function EdgeVinylWebsite() {
       subtitle: "Clean OEM+ restyling",
       image: "/gallery/ram-chrome-delete.jpg",
     },
+    {
+      title: "Evo X — Matte Black",
+      subtitle: "Full color change, stealth finish",
+      image: "/gallery/evo-x-matte-black.jpg",
+    },
+    {
+      title: "Miata Track Car",
+      subtitle: "Gloss lime green full wrap",
+      image: "/gallery/miata-track-car.jpg",
+    },
+    {
+      title: "Kitchen Countertop",
+      subtitle: "Gloss white architectural wrap",
+      image: "/gallery/countertop-gloss-white.jpg",
+    },
+    {
+      title: "Mini-Split Cover",
+      subtitle: "Gloss black architectural wrap",
+      image: "/gallery/mini-split-gloss-black.jpg",
+    },
   ];
 
   return (
