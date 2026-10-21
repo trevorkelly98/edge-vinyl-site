@@ -147,7 +147,7 @@ export default function EdgeVinylWebsite() {
                 <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-zinc-900">
                   <img
                     src="/gallery/featured-evo-x.jpg"
-                    alt="Evo X wrapped in gloss white with gold sparkle at sunset in the Utah mountains"
+                    alt="Evo X wrapped in gloss white with gold sparkle on a mountain road surrounded by fall colors"
                     className="h-[360px] w-full object-cover"
                   />
                 </div>
