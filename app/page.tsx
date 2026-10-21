@@ -47,7 +47,7 @@ export default function EdgeVinylWebsite() {
     },
     {
       title: "Evo X — Matte Black",
-      subtitle: "Full color change, stealth finish",
+      subtitle: "Avery SW900 Matte Black",
       image: "/gallery/evo-x-matte-black.jpg",
     },
     {
