@@ -5,39 +5,55 @@ const galleryItems: GalleryItem[] = [
   {
     title: "Evo X — Matte Black",
     subtitle: "Avery SW900 Matte Black",
-    image: "/gallery/evo-x-matte-black.jpg",
     className: "row-span-2 sm:col-span-2",
+    photos: [
+      { image: "/gallery/evo-x-matte-black.jpg", label: "Profile" },
+      { image: "/gallery/evo-x-matte-wheel.jpg", label: "Wheel + Brembo detail" },
+      { image: "/gallery/evo-x-matte-front.jpg", label: "Front end detail" },
+      { image: "/gallery/evo-x-matte-rear.jpg", label: "Rear 3/4" },
+    ],
   },
   {
     title: "Miata Track Car",
     subtitle: "Gloss lime green full wrap",
-    image: "/gallery/miata-track-car.jpg",
     className: "sm:col-span-2",
+    photos: [
+      { image: "/gallery/miata-track-car.jpg", label: "In the shop" },
+      { image: "/gallery/miata-hood-vent.jpg", label: "Hood vent" },
+      { image: "/gallery/miata-rear-wing.jpg", label: "Rear wing" },
+    ],
   },
   {
     title: "CBR1000RR",
     subtitle: "Avery SW900 Gloss Black",
-    image: "/gallery/cbr1000rr-gloss-black.jpg",
+    photos: [{ image: "/gallery/cbr1000rr-gloss-black.jpg", label: "Side profile" }],
   },
   {
     title: "Chrome Delete",
     subtitle: "Ram 1500, blacked out",
-    image: "/gallery/ram-chrome-delete.jpg",
+    photos: [{ image: "/gallery/ram-chrome-delete.jpg", label: "At sunset" }],
   },
   {
     title: "Evo X",
     subtitle: "3M 2080 Gloss White Gold Sparkle",
-    image: "/gallery/evo-x-gold-sparkle.jpg",
+    photos: [
+      { image: "/gallery/evo-x-gold-sparkle.jpg", label: "Front, at sunset" },
+      { image: "/gallery/evo-x-driveway.jpg", label: "Gold flake close-up" },
+      { image: "/gallery/evo-x-overlook.jpg", label: "Valley overlook" },
+    ],
   },
   {
     title: "Kitchen Countertop",
     subtitle: "Gloss white architectural wrap",
-    image: "/gallery/countertop-gloss-white.jpg",
+    photos: [
+      { image: "/gallery/countertop-gloss-white.jpg", label: "Edge detail" },
+      { image: "/gallery/countertop-full-run.jpg", label: "Full run" },
+    ],
   },
   {
     title: "Mini-Split Cover",
     subtitle: "Gloss black architectural wrap",
-    image: "/gallery/mini-split-gloss-black.jpg",
+    photos: [{ image: "/gallery/mini-split-gloss-black.jpg", label: "Front" }],
   },
 ];
 
@@ -304,8 +320,8 @@ export default function EdgeVinylWebsite() {
             </h2>
           </div>
           <p className="max-w-sm leading-7 text-zinc-400">
-            Every photo on this page is a real Edge Vinyl job. Tap any photo
-            to see it full-screen.
+            Every photo on this page is a real Edge Vinyl job. Tap a build
+            to look through its photos.
           </p>
         </div>
 
