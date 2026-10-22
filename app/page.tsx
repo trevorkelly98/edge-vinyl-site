@@ -1,6 +1,5 @@
 import QuoteForm from "../components/QuoteForm";
 import Gallery, { type GalleryItem } from "../components/Gallery";
-import EvoCompare from "../components/EvoCompare";
 
 const galleryItems: GalleryItem[] = [
   {
@@ -16,11 +15,6 @@ const galleryItems: GalleryItem[] = [
     className: "sm:col-span-2",
   },
   {
-    title: "Evo X — Wheel Detail",
-    subtitle: "Avery SW900 Matte Black",
-    image: "/gallery/evo-x-matte-wheel.jpg",
-  },
-  {
     title: "CBR1000RR",
     subtitle: "Avery SW900 Gloss Black",
     image: "/gallery/cbr1000rr-gloss-black.jpg",
@@ -31,44 +25,14 @@ const galleryItems: GalleryItem[] = [
     image: "/gallery/ram-chrome-delete.jpg",
   },
   {
-    title: "Evo X — Front End",
-    subtitle: "Avery SW900 Matte Black",
-    image: "/gallery/evo-x-matte-front.jpg",
-  },
-  {
     title: "Evo X",
     subtitle: "3M 2080 Gloss White Gold Sparkle",
     image: "/gallery/evo-x-gold-sparkle.jpg",
   },
   {
-    title: "Evo X — Gold Flake Close-Up",
-    subtitle: "3M 2080 Gloss White Gold Sparkle",
-    image: "/gallery/evo-x-driveway.jpg",
-  },
-  {
-    title: "Miata — Hood Vent",
-    subtitle: "Gloss lime green full wrap",
-    image: "/gallery/miata-hood-vent.jpg",
-  },
-  {
-    title: "Miata — Rear Wing",
-    subtitle: "Gloss lime green full wrap",
-    image: "/gallery/miata-rear-wing.jpg",
-  },
-  {
-    title: "Evo X — Rear 3/4",
-    subtitle: "Avery SW900 Matte Black",
-    image: "/gallery/evo-x-matte-rear.jpg",
-  },
-  {
     title: "Kitchen Countertop",
     subtitle: "Gloss white architectural wrap",
     image: "/gallery/countertop-gloss-white.jpg",
-  },
-  {
-    title: "Kitchen Countertop — Full Run",
-    subtitle: "Gloss white architectural wrap",
-    image: "/gallery/countertop-full-run.jpg",
   },
   {
     title: "Mini-Split Cover",
@@ -359,10 +323,31 @@ export default function EdgeVinylWebsite() {
           <p className="mt-4 max-w-2xl leading-8 text-zinc-400">
             This Evo X is the test bed — every finish gets proven on my own
             car before it ever goes on a customer's. It's worn all three of
-            these looks. Drag the slider to flip through them.
+            these looks.
           </p>
 
-          <EvoCompare phases={evoStory} />
+          <div className="mt-12 grid gap-3 md:grid-cols-3">
+            {evoStory.map((phase) => (
+              <figure key={phase.step} className="group relative overflow-hidden bg-zinc-900">
+                <img
+                  src={phase.image}
+                  alt={phase.alt}
+                  loading="lazy"
+                  className="h-80 w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+                <figcaption className="absolute inset-x-0 bottom-0 p-5">
+                  <div className="font-display text-sm font-semibold tracking-[0.3em] text-red-400">
+                    {phase.step}
+                  </div>
+                  <div className="mt-1 font-display text-2xl font-semibold uppercase leading-tight">
+                    {phase.title}
+                  </div>
+                  <div className="mt-1 text-sm text-zinc-300">{phase.film}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
