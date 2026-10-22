@@ -68,7 +68,7 @@ export default function Gallery({ items }: { items: GalleryItem[] }) {
 
         <a
           href="#quote"
-          className="group relative flex flex-col justify-between overflow-hidden bg-red-600 p-5 transition hover:bg-red-500 sm:col-span-2 lg:col-span-1"
+          className="group relative flex flex-col justify-between overflow-hidden bg-red-600 p-5 transition hover:bg-red-500 sm:col-span-2"
         >
           <div className="font-display text-sm font-semibold uppercase tracking-[0.25em] text-red-200">
             Next up
