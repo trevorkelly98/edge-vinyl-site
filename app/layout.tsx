@@ -1,21 +1,47 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Oswald } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
+
+const description =
+  "Edge Vinyl is Utah's home for high-end vinyl wraps, paint protection film (PPF), chrome deletes, and motorcycle wraps. Text (801) 865-9601 for a quote.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://edge-vinyl.net"),
   title: "Edge Vinyl | Utah Vinyl Wraps, PPF & Chrome Deletes",
-  description:
-    "Edge Vinyl is Utah's home for high-end vinyl wraps, paint protection film (PPF), chrome deletes, and motorcycle wraps. Text (801) 865-9601 for a quote.",
+  description,
+  openGraph: {
+    title: "Edge Vinyl | Utah Vinyl Wraps, PPF & Chrome Deletes",
+    description,
+    url: "https://edge-vinyl.net",
+    siteName: "Edge Vinyl",
+    type: "website",
+    images: [
+      {
+        url: "/gallery/featured-evo-x.jpg",
+        width: 1179,
+        height: 786,
+        alt: "White Evo X wrapped by Edge Vinyl on a mountain road in fall",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Edge Vinyl | Utah Vinyl Wraps, PPF & Chrome Deletes",
+    description,
+    images: ["/gallery/featured-evo-x.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${oswald.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
