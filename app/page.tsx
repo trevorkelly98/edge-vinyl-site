@@ -224,7 +224,7 @@ export default function EdgeVinylWebsite() {
         <img
           src="/gallery/featured-evo-x.jpg"
           alt="Evo X wrapped in gloss white with gold sparkle on a mountain road surrounded by fall colors"
-          className="absolute inset-0 hidden h-full w-full object-cover [object-position:center_62%] md:block"
+          className="absolute inset-0 hidden h-full w-full object-cover [object-position:center_75%] md:block"
         />
         <div className="absolute inset-0 hidden bg-gradient-to-t from-black via-black/40 to-black/15 md:block" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-black/60 via-transparent to-transparent md:block" />
