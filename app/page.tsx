@@ -220,16 +220,25 @@ export default function EdgeVinylWebsite() {
         </div>
       </header>
 
-      <section id="top" className="relative flex min-h-[92vh] items-end overflow-hidden">
+      <section id="top" className="relative overflow-hidden bg-black">
         <img
           src="/gallery/featured-evo-x.jpg"
           alt="Evo X wrapped in gloss white with gold sparkle on a mountain road surrounded by fall colors"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 hidden h-full w-full object-cover [object-position:center_62%] md:block"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/15" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 hidden bg-gradient-to-t from-black via-black/40 to-black/15 md:block" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-black/60 via-transparent to-transparent md:block" />
 
-        <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 pt-40 md:px-10">
+        <div className="relative md:hidden">
+          <img
+            src="/gallery/featured-evo-x.jpg"
+            alt="Evo X wrapped in gloss white with gold sparkle on a mountain road surrounded by fall colors"
+            className="aspect-[3/2] w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+        </div>
+
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-end px-6 pb-16 pt-10 md:min-h-[92vh] md:px-10 md:pt-40">
           <div className="flex items-center gap-3 font-display text-sm font-medium uppercase tracking-[0.3em] text-red-400">
             <span className="h-px w-10 bg-red-500" />
             Utah Vinyl Wraps
@@ -404,13 +413,13 @@ export default function EdgeVinylWebsite() {
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative overflow-hidden">
             <img
-              src="/gallery/miata-track-car.jpg"
-              alt="Lime green Miata track car wrapped by Edge Vinyl"
+              src="/gallery/evo-x-overlook.jpg"
+              alt="White Evo X wrapped in 3M 2080 Gloss White Gold Sparkle parked above the Utah valley"
               loading="lazy"
               className="h-[420px] w-full object-cover lg:h-[520px]"
             />
             <div className="absolute bottom-4 left-4 bg-black/80 px-4 py-2 font-display text-sm font-medium uppercase tracking-[0.2em] text-zinc-200">
-              The Flyin' Miata build — full wrap
+              The Evo — Gloss White Gold Sparkle
             </div>
           </div>
           <div>
@@ -418,28 +427,58 @@ export default function EdgeVinylWebsite() {
               About
             </div>
             <h2 className="mt-3 font-display text-4xl font-semibold uppercase leading-tight md:text-5xl">
-              One pair of hands.
-              <br />
-              Start to finish.
+              About Edge Vinyl
             </h2>
             <div className="mt-6 space-y-4 leading-8 text-zinc-300">
               <p>
-                I'm Trevor — Edge Vinyl is me. The person who quotes your car
-                is the person who preps it, wraps it, and checks every edge
-                before it leaves. No hand-offs, no "good enough."
+                Edge Vinyl is owned and operated by Trevor. He handles the
+                quote, prep, installation, and final inspection on every job,
+                so nothing gets handed off or lost along the way.
               </p>
               <p>
-                I got into this the way most people do: my own car. The Evo X
-                on this page has worn three colors, because finishes get
-                tested on my build before they ever go on a customer's.
+                His Evo X has worn three different finishes. It gives
+                customers a chance to see how the colors look in real
+                daylight — not just on a sample swatch.
               </p>
               <p>
-                Utah based. Cars, trucks, bikes — and the occasional kitchen.
+                The work covers cars, trucks, and motorcycles, plus select
+                architectural projects like countertops and mini-split covers.
               </p>
             </div>
-            <div className="mt-8 font-display text-lg font-semibold uppercase tracking-[0.2em] text-white">
-              — Trevor, Edge Vinyl
-            </div>
+            <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-white/10 pt-8">
+              <div>
+                <dt className="font-display text-sm font-medium uppercase tracking-[0.22em] text-zinc-500">
+                  Owner / Installer
+                </dt>
+                <dd className="mt-1.5 font-display text-xl font-semibold">
+                  Trevor
+                </dd>
+              </div>
+              <div>
+                <dt className="font-display text-sm font-medium uppercase tracking-[0.22em] text-zinc-500">
+                  Based in
+                </dt>
+                <dd className="mt-1.5 font-display text-xl font-semibold">
+                  Utah
+                </dd>
+              </div>
+              <div>
+                <dt className="font-display text-sm font-medium uppercase tracking-[0.22em] text-zinc-500">
+                  Film brands
+                </dt>
+                <dd className="mt-1.5 font-display text-xl font-semibold">
+                  3M · Avery · KPMF
+                </dd>
+              </div>
+              <div>
+                <dt className="font-display text-sm font-medium uppercase tracking-[0.22em] text-zinc-500">
+                  Get a quote
+                </dt>
+                <dd className="mt-1.5 font-display text-xl font-semibold">
+                  Text · Email · Form
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
